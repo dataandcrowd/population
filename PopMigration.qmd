@@ -1,0 +1,36 @@
+---
+title: "Population Migration"
+format: html
+engine: knitr
+filters:
+  - webr
+---
+
+## 100m National Shp
+
+```{r}
+library(tidyverse)
+library(sf)
+library(mapview)
+```
+
+```{r}
+unzip("PWD_100m_national_SHP.zip")
+
+pwd00 <- read_sf("PWD_100m_national_SHP/PWD_2000_national_100m.shp")
+pwd05 <- read_sf("PWD_100m_national_SHP/PWD_2005_national_100m.shp")
+pwd10 <- read_sf("PWD_100m_national_SHP/PWD_2010_national_100m.shp")
+pwd15 <- read_sf("PWD_100m_national_SHP/PWD_2015_national_100m.shp")
+pwd20 <- read_sf("PWD_100m_national_SHP/PWD_2020_national_100m.shp")
+
+```
+
+```{r}
+mapview(pwd00, col.region = "grey40") +
+  mapview(pwd05, col.region = "#3099D3") +
+  mapview(pwd10, col.region = "#924D7D") +
+  mapview(pwd15, col.region = "#AB3967") +
+  mapview(pwd20, col.region = "#DC143C") 
+```
+
+
